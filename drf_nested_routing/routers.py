@@ -13,8 +13,9 @@ class NestedRegistryItem(object):
         self.parent_prefix = parent_prefix
         self.parent_item = parent_item
 
-    def register(self, prefix, viewset, parent_query_lookups=None):
-        base_name = viewset.queryset.model.__name__.lower()
+    def register(self, prefix, viewset, parent_query_lookups=None, base_name=None):
+        if not base_name:
+            base_name = viewset.queryset.model.__name__.lower()
         if parent_query_lookups:
             add_parent_query_lookups(base_name, parent_query_lookups)
         self.router._register(prefix=self.get_prefix(current_prefix=prefix, parent_query_lookups=parent_query_lookups),
