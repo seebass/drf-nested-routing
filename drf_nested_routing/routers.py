@@ -5,6 +5,7 @@ from rest_framework.response import Response
 
 from drf_nested_routing import add_parent_query_lookups
 import drf_nested_routing
+from drf_nested_routing.views import NestedViewSetMixin
 
 
 class NestedRegistryItem(object):
@@ -14,6 +15,8 @@ class NestedRegistryItem(object):
         self.parent_item = parent_item
 
     def register(self, prefix, viewset, parent_query_lookups=None, base_name=None):
+        if not issubclass(viewset, NestedViewSetMixin):
+            raise ValueError("ViewSets of nested routes must subclass NestedViewSetMixin")
         if not base_name:
             base_name = viewset.queryset.model.__name__.lower()
         if parent_query_lookups:
