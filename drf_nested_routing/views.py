@@ -10,7 +10,7 @@ class NestedViewSetMixin(object):
         return self.__filter_query_set_by_parent_lookups(queryset)
 
     def __add_related_fetches_to_querySet(self, queryset):
-        parent_lookups = drf_nested_routing.get_parent_query_lookups_by_class(queryset.model.__class__)
+        parent_lookups = drf_nested_routing.get_parent_query_lookups_by_class(queryset.model)
         related = getattr(self, 'select_related', [])
         lookups = parent_lookups + related
         if lookups:
