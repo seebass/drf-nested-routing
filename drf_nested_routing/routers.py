@@ -48,7 +48,7 @@ class NestedRouterMixin(object):
         self._register(*args, **kwargs)
         return NestedRegistryItem(router=self, parent_prefix=self.registry[-1][0])
 
-    def get_api_root_view(self):
+    def get_api_root_view(self, schema_urls=None):
         """
         Return a view to use as the API root.
         """

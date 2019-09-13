@@ -12,7 +12,7 @@ setup(
     packages=find_packages(exclude=['tests*']),
     install_requires=[
         'django>=1.6',
-        'djangorestframework>=3.0.0',
+        'djangorestframework>=3.4.0',
     ],
     zip_safe=False,
     classifiers=[
