@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='drf-nested-routing',
-    version="0.9.6",
+    version="0.9.7",
     url='https://github.com/seebass/drf-nested-routing',
     license='MIT',
     description='Nested routing extension for Django REST Framework 3',
