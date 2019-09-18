@@ -14,15 +14,15 @@ class NestedRegistryItem(object):
         self.parent_prefix = parent_prefix
         self.parent_item = parent_item
 
-    def register(self, prefix, viewset, parent_query_lookups=None, base_name=None):
+    def register(self, prefix, viewset, parent_query_lookups=None, basename=None):
         if not issubclass(viewset, NestedViewSetMixin):
             raise ValueError("ViewSets of nested routes must subclass NestedViewSetMixin")
-        if not base_name:
-            base_name = viewset.queryset.model.__name__.lower()
+        if not basename:
+            basename = viewset.queryset.model.__name__.lower()
         if parent_query_lookups:
-            add_parent_query_lookups(base_name, parent_query_lookups)
+            add_parent_query_lookups(basename, parent_query_lookups)
         self.router._register(prefix=self.get_prefix(current_prefix=prefix, parent_query_lookups=parent_query_lookups),
-                              viewset=viewset, base_name=base_name)
+                              viewset=viewset, basename=basename)
         return NestedRegistryItem(router=self.router, parent_prefix=prefix, parent_item=self)
 
     def get_prefix(self, current_prefix, parent_query_lookups):
