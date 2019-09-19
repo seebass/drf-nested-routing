@@ -11,8 +11,8 @@ setup(
     author_email='bredehoeft.sebastian@gmail.com',
     packages=find_packages(exclude=['tests*']),
     install_requires=[
-        'django>=1.6',
-        'djangorestframework>=3.4.0',
+        'django>=2.0',
+        'djangorestframework>=3.10.3',
     ],
     zip_safe=False,
     classifiers=[
